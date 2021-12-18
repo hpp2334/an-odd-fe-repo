@@ -194,7 +194,7 @@ export const OfferSkills = () => {
         </Box>
       </Fluid>
       <Fluid>
-        <Typography variant='caption'>讲道理，看面经比较保险，无论是 实习, 春招秋招，还是社招。</Typography>
+        <Typography variant='caption'>*讲道理，看面经比较保险，无论是 实习, 春招秋招，还是社招。</Typography>
       </Fluid>
     </SectionBlock>
   );

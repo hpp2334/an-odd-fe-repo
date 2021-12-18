@@ -41,7 +41,7 @@ export const WebApplication = () => {
             <ApplicationTitleText>网页</ApplicationTitleText>
           </ApplicationTitle>
           <ApplicationContentContainer>
-            最经典的应用，比如现在展示的这个网页。网页可以很复杂，如以下是最近
+            网页最经典的应用，比如现在展示的这个网页。当然，网页可以很复杂，如以下是最近
             VSCode 发布的网页版 VSCode。
           </ApplicationContentContainer>
           <IFrame src="https://vscode.dev/"></IFrame>

@@ -28,7 +28,7 @@ export const Home = () => {
         bottom: 40,
       }}>
         <Typography variant='caption'>版本: {VERSION}</Typography>
-        <Typography variant='caption'>更新时间: {format(PUBLISH_TIME, "yyyy-MM-dd HH:mm:ss")} (距发布已过{(formatDistanceToNow(PUBLISH_TIME, {
+        <Typography variant='caption'>更新时间: {format(PUBLISH_TIME, "yyyy-MM-dd HH:mm:ss")} (距更新已过{(formatDistanceToNow(PUBLISH_TIME, {
           locale: zhCN
         }))}，请注意时效性)</Typography>
       </Box>
