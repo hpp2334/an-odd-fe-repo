@@ -1,5 +1,5 @@
 import { Box, Typography, styled, Slider } from "@mui/material";
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import { Fluid } from "../components/Fluid";
 import { SectionBlock } from "../components/Section";
 
@@ -12,6 +12,93 @@ const SubTitle = styled("div")(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
+const skills = [
+  {
+    title: "计算机基础",
+    subTitle: [],
+    items: [
+      [0, "计算机网络: TCP/UDP, 网络模型, HTTP, HTTP/2, HTTPS, ..."],
+      [0, "操作系统: 线程/进程, ..."],
+      [0, "数据结构与算法: 栈, 队列, 二叉树, ..."],
+      [0, "..."],
+    ],
+  },
+  {
+    title: "前端基础技术",
+    subTitle: [],
+    items: [
+      [0, "HTML5"],
+      [0, "CSS"],
+      [0, "JavaScript, ES6+"],
+    ],
+  },
+  {
+    title: "流行的 Web 前端框架",
+    subTitle: [
+      ["=0", "2 选 1即可"],
+      [
+        "=50",
+        "2 选 1即可，如果能掌握 1 个的同时了解其他框架的异同会更好",
+      ],
+      ['=100', '目前国内用 Angular 不多']
+    ],
+    items: [
+      [50, "React"],
+      [50, "Vue"],
+      [100, "Angular"],
+    ],
+  },
+  {
+    title: "Node 技术",
+    subTitle: [[0, "JavaScript 写本地工具、Server"]],
+    items: [
+      [50, "Node"],
+      [50, "Node 框架: Express, Koa, NestJS"],
+    ],
+  },
+  {
+    title: "前端工程化",
+    subTitle: [],
+    items: [
+      [100, "流程工具: Gulp"],
+      [100, "构建工具: Babel, SWC, es-build"],
+      [100, "打包工具: Webpack"],
+      [100, "Lint 工具: ESLint"],
+      [100, "代码格式化工具: Prettier"],
+    ],
+  },
+  {
+    title: "前端测试",
+    subTitle: [],
+    items: [
+      [100, "单元测试: Jest"],
+      [100, "集成测试: Cypress"],
+      [100, "headless 自动化测试: Pupeteer"],
+    ],
+  },
+  {
+    title: "前端其他",
+    subTitle: [],
+    items: [
+      [50, "前端安全"],
+      [100, "前端性能"],
+      ["=50", "网络请求: AJAX"],
+      ["=100", "网络请求: AJAX, WebSocket"],
+      [100, "异步流控制: RxJS"],
+    ],
+  },
+  {
+    title: "其他技术",
+    subTitle: [[100, "可以根据 兴趣/业务 学习"]],
+    items: [
+      [100, "跨端技术: React Native, Weex, Flutter"],
+      [100, "微信小游戏、小程序"],
+      [100, "前端可视化技术"],
+      [100, "WebAssembly"],
+    ],
+  },
+];
+
 const offerSkillLevelMasks = [
   {
     value: 0,
@@ -23,7 +110,7 @@ const offerSkillLevelMasks = [
   },
   {
     value: 100,
-    label: "极佳",
+    label: "比较完整的",
   },
 ];
 
@@ -33,6 +120,13 @@ function valueLabelFormat(value: number) {
 
 export const OfferSkills = () => {
   const [offerSkillLevelValue, setOffetSkillLevelValue] = useState(0);
+
+  const matchLevel = useCallback((level: number | string) => {
+    return (
+      (typeof level === "string" && level === "=" + offerSkillLevelValue) ||
+      (typeof level === "number" && offerSkillLevelValue >= level)
+    );
+  }, [offerSkillLevelValue]);
 
   return (
     <SectionBlock sx={{ backgroundColor: "#eee" }}>
@@ -70,79 +164,37 @@ export const OfferSkills = () => {
             gap: ["15px", "30px 15px"],
           }}
         >
-          {offerSkillLevelValue >= 0 && (
-            <>
-              <Title>计算机基础</Title>
-              <div>
-                <div>
-                  计算机网络: TCP/UDP, 网络模型, HTTP, HTTP/2, HTTPS, ...
-                </div>
-                <div>操作系统: 线程/进程, ...</div>
-                <div>数据结构与算法: 栈, 队列, 二叉树, ...</div>
-                <div>...</div>
-              </div>
-              <Title>基础技术</Title>
-              <div>
-                <div>HTML5</div>
-                <div>CSS</div>
-                <div>JavaScript, ES6+</div>
-              </div>
-            </>
-          )}
-          {offerSkillLevelValue >= 50 && (
-            <>
-              <div>
-                <Title>流行的 Web 前端框架</Title>{" "}
-                <SubTitle>
-                  3 选 1即可，如果能掌握 1
-                  个的同时了解其他框架的异同会更好，另外目前国内用 Angular 不多
-                </SubTitle>
-              </div>
-              <div>
-                <div>React</div>
-                <div>Vue</div>
-                <div>Angular</div>
-              </div>
-              <div>
-                <Title>Node 技术</Title>{" "}
-                <SubTitle>JavaScript 写本地工具、Server</SubTitle>
-              </div>
-              <div>
-                <div>Node</div>
-                <div>Node 框架: Express, NestJS</div>
-              </div>
-            </>
-          )}
-          {offerSkillLevelValue >= 100 && (
-            <>
-              <div>
-                <Title>前端工程化</Title>
-              </div>
-              <div>
-                <div>流程工具: gulp</div>
-                <div>构建工具: Babel, SWC, es-build</div>
-                <div>打包工具: Webpack</div>
-              </div>
-              <div>
-                <Title>前端其他</Title>
-              </div>
-              <div>
-                <div>前端安全</div>
-                <div>前端性能</div>
-              </div>
-              <div>
-                <Title>其他技术 (兴趣/业务 相关)</Title>
-              </div>
-              <div>
-                <div>跨端技术: React Native, Weex, Flutter</div>
-                <div>微信小游戏、小程序</div>
-                <div>前端可视化技术</div>
-                <div>WebAssembly</div>
-                <div>...</div>
-              </div>
-            </>
-          )}
+          {skills.map((skill, index) => {
+            const title = skill.title;
+            const subTitle = skill.subTitle.find(([level]) =>
+              matchLevel(level)
+            )?.[1];
+            const details = skill.items
+              .filter(([level]) => matchLevel(level))
+              .map((item) => item[1]);
+
+            if (details.length === 0) {
+              return null;
+            } else {
+              return (
+                <React.Fragment key={index}>
+                  <div>
+                    <Title>{title}</Title>
+                    {subTitle && <SubTitle>{subTitle}</SubTitle>}
+                  </div>
+                  <ul>
+                    {details.map((detail, index) => (
+                      <li key={index}>{detail}</li>
+                    ))}
+                  </ul>
+                </React.Fragment>
+              );
+            }
+          })}
         </Box>
+      </Fluid>
+      <Fluid>
+        <Typography variant='caption'>讲道理，看面经比较保险，无论是 实习, 春招秋招，还是社招。</Typography>
       </Fluid>
     </SectionBlock>
   );
