@@ -6,6 +6,8 @@ import {
   StepButton,
   Stepper,
   Typography,
+  useMediaQuery,
+  useTheme,
 } from "@mui/material";
 import React, { useState } from "react";
 import { Fluid } from "../components/Fluid";
@@ -13,13 +15,15 @@ import { SectionBlock, SectionTitle } from "../components/Section";
 
 const PossibleQuickStartRoadMap = () => {
   const [step, setStep] = useState(0);
+  const theme = useTheme();
+  const matchSM = useMediaQuery(theme.breakpoints.up('sm'));
   const handleStep = (to: number) => () => {
     setStep(to);
   };
 
   return (
     <div>
-      <Stepper nonLinear activeStep={step}>
+      <Stepper nonLinear activeStep={step} orientation={matchSM ? 'horizontal' : "vertical"}>
         <Step>
           <StepButton onClick={handleStep(0)}>Stage 1: 写基础网页</StepButton>
         </Step>

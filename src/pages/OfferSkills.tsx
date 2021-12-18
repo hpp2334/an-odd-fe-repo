@@ -63,8 +63,11 @@ export const OfferSkills = () => {
         <Box
           sx={{
             display: "grid",
-            gridTemplateColumns: "200px auto",
-            gap: "30px 20px",
+            gridTemplateColumns: {
+              sx: "auto",
+              sm: "200px auto",
+            },
+            gap: ["15px", "30px 15px"],
           }}
         >
           {offerSkillLevelValue >= 0 && (

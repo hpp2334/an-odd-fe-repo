@@ -8,11 +8,12 @@ export interface IFrameProps {
 }
 
 const Header = styled('div')({
-  height: 40,
   padding: 10,
   paddingLeft: 20,
   backgroundColor: '#ddd',
-  borderLeft: '10px solid #bbb'
+  borderLeft: '10px solid #bbb',
+  whiteSpace: 'pre-wrap',
+  wordBreak: 'break-all'
 })
 
 const IFrameStyled = styled('iframe')({
