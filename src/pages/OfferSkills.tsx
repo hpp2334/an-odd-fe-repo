@@ -57,6 +57,15 @@ const skills = [
     ],
   },
   {
+    title: "常见 CSS 方案",
+    subTitle: [],
+    items: [
+      [100, "CSS"],
+      [100, "SCSS/SASS, Less, module CSS"],
+      [100, "CSS in JS"],
+    ],
+  },
+  {
     title: "前端工程化",
     subTitle: [],
     items: [
