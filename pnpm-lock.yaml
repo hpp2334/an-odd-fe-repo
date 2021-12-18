@@ -11,6 +11,7 @@ specifiers:
   '@types/react': ^17.0.37
   '@types/react-dom': ^17.0.11
   cross-env: ^7.0.3
+  date-fns: ^2.27.0
   html-webpack-plugin: ^5.5.0
   react: ^17.0.2
   react-dom: ^17.0.2
@@ -29,6 +30,7 @@ dependencies:
   '@mui/material': 5.2.4_fa2645acd9a035406d0184711710de51
   '@types/react': 17.0.37
   '@types/react-dom': 17.0.11
+  date-fns: 2.27.0
   react: 17.0.2
   react-dom: 17.0.2_react@17.0.2
 
@@ -1306,6 +1308,11 @@ packages:
 
   /csstype/3.0.10:
     resolution: {integrity: sha512-2u44ZG2OcNUO9HDp/Jl8C07x6pU/eTR3ncV91SiK3dhG9TWvRVsCoJw14Ckx5DgWkzGA3waZWO3d7pgqpUI/XA==}
+    dev: false
+
+  /date-fns/2.27.0:
+    resolution: {integrity: sha512-sj+J0Mo2p2X1e306MHq282WS4/A8Pz/95GIFcsPNMPMZVI3EUrAdSv90al1k+p74WGLCruMXk23bfEDZa71X9Q==}
+    engines: {node: '>=0.11'}
     dev: false
 
   /debug/2.6.9:

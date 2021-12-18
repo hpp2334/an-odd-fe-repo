@@ -1,6 +1,8 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
+const webpack = require('webpack')
+const pkgJson = require('./package.json')
 
 const BUILD_ENV = process.env.BUILD_ENV;
 const isDevelopment = BUILD_ENV === "development";
@@ -45,6 +47,10 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, './public/template.html'),
+    }),
+    new webpack.DefinePlugin({
+      VERSION: JSON.stringify(pkgJson.version),
+      PUBLISH_TIME: JSON.stringify(Date.now()),
     }),
     isDevelopment && new ReactRefreshWebpackPlugin(),
   ].filter(Boolean),
