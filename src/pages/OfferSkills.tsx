@@ -82,7 +82,7 @@ const skills = [
     items: [
       [100, "单元测试: Jest"],
       [100, "集成测试: Cypress"],
-      [100, "headless 自动化测试: Pupeteer"],
+      [100, "headless 自动化测试: Puppeteer"],
     ],
   },
   {
@@ -91,6 +91,7 @@ const skills = [
     items: [
       [50, "前端安全"],
       [100, "前端性能"],
+      ["=0", "网络请求: AJAX"],
       ["=50", "网络请求: AJAX"],
       ["=100", "网络请求: AJAX, WebSocket"],
       [100, "异步流控制: RxJS"],
