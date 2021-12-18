@@ -1,4 +1,4 @@
-import { Typography, Box } from '@mui/material'
+import { Typography, Box, Link } from '@mui/material'
 import { format, formatDistanceToNow } from 'date-fns';
 import { zhCN } from 'date-fns/locale';
 import React from 'react'
@@ -31,6 +31,7 @@ export const Home = () => {
         <Typography variant='caption'>更新时间: {format(PUBLISH_TIME, "yyyy-MM-dd HH:mm:ss")} (距更新已过{(formatDistanceToNow(PUBLISH_TIME, {
           locale: zhCN
         }))}，请注意时效性)</Typography>
+        <Typography variant='caption'>Repository: <Link underline='hover' target='_blank' href='https://github.com/hpp2334/an-odd-fe-repo'>https://github.com/hpp2334/an-odd-fe-repo</Link></Typography>
       </Box>
     </Box>
   )
